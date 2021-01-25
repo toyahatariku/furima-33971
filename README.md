@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+//登録者情報
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| email            | string | null: false | //メールアドレス
+| password         | string | null: false | //パスワード
+| nickname         | string | null: false | //ニックネーム
+| first_name       | string | null: false | //苗字
+| second_name      | string | null: false | //名前
+| first_name_kana  | string | null: false | //苗字カナ
+| second_name_kana | string | null: false | //名前カナ
+| birthday         | string | null: false | //誕生日
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :purchases
 
-* Ruby version
+## items テーブル
+//出品品
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user_id          | references | null: false, foreign_key: true | //出品者ID
+| item_name        | string     | null: false                    | //商品名
+| item_description | string     | null: false                    | //商品説明
+| category         | string     | null: false                    | //カテゴリー
+| condition        | string     | null: false                    | //商品の状態
+| shipping_burden  | string     | null: false                    | //配送料の負担
+| shipping_area    | string     | null: false                    | //発送元地域
+| days_to_ship     | string     | null: false                    | //発送までの日数
+| item_price       | string     | null: false                    | //価格
 
-* System dependencies
+### Association
+- belongs_to :users
+- belongs_to :purchases
+- belongs_to :images
 
-* Configuration
+## purchases テーブル
+//購入履歴
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user_id       | references | null: false, foreign_key: true | //購入者ID
+| item_id       | references | null: false, foreign_key: true | //出品品ID
+| postal_code   | string     | null: false                    | //郵便番号
+| prefectures   | string     | null: false                    | //都道府県
+| municipality  | string     | null: false                    | //市区町村
+| address       | string     | null: false                    | //番地
+| building_name | string     |                                | //建物名
+| phone_number  | string     | null: false                    | //電話番号
 
-* Database creation
+### Association
+- belongs_to :users
+- belongs_to :items
+- belongs_to :cards
 
-* Database initialization
+## cards テーブル
+//カード情報
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| purchase_id     | references | null: false, foreign_key: true | //購入履歴ID
+| card_number     | string     | null: false                    | //カード番号
+| expiration_date | string     | null: false                    | //有効期限
+| security_code   | string     | null: false                    | //セキュリティコード
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :purchases
