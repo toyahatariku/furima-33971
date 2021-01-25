@@ -41,6 +41,15 @@
 | ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true | //購入者ID
 | item          | references | null: false, foreign_key: true | //出品品ID
+
+### Association
+- belongs_to :users
+- belongs_to :items
+
+## address テーブル
+//購入者住所
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    | //郵便番号
 | prefecture_id | integer    | null: false                    | //都道府県
 | municipality  | string     | null: false                    | //市区町村
@@ -49,5 +58,5 @@
 | phone_number  | string     | null: false                    | //電話番号
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :
+- belongs_to :
