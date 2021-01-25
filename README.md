@@ -2,16 +2,16 @@
 
 ## users テーブル
 //登録者情報
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| email              | string | null: false | //メールアドレス
-| encrypted_password | string | null: false | //パスワード
-| nickname           | string | null: false | //ニックネーム
-| first_name         | string | null: false | //苗字
-| second_name        | string | null: false | //名前
-| first_name_kana    | string | null: false | //苗字カナ
-| second_name_kana   | string | null: false | //名前カナ
-| birthday           | date   | null: false | //誕生日
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| email              | string | null: false, uniqueness: true | //メールアドレス
+| encrypted_password | string | null: false                   | //パスワード
+| nickname           | string | null: false                   | //ニックネーム
+| first_name         | string | null: false                   | //苗字
+| second_name        | string | null: false                   | //名前
+| first_name_kana    | string | null: false                   | //苗字カナ
+| second_name_kana   | string | null: false                   | //名前カナ
+| birthday           | date   | null: false                   | //誕生日
 
 ### Association
 - has_many :items
