@@ -42,7 +42,7 @@
 | user          | references | null: false, foreign_key: true | //購入者ID
 | item          | references | null: false, foreign_key: true | //出品品ID
 | postal_code   | integer    | null: false                    | //郵便番号
-| prefectures   | string     | null: false                    | //都道府県
+| prefectures   | integer    | null: false                    | //都道府県
 | municipality  | string     | null: false                    | //市区町村
 | address       | string     | null: false                    | //番地
 | building_name | string     |                                | //建物名
