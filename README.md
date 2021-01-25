@@ -34,7 +34,6 @@
 ### Association
 - belongs_to :users
 - belongs_to :purchases
-- belongs_to :images
 
 ## purchases テーブル
 //購入履歴
