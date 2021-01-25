@@ -51,16 +51,3 @@
 ### Association
 - belongs_to :users
 - belongs_to :items
-- belongs_to :cards
-
-## cards テーブル
-//カード情報
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| purchase_id     | references | null: false, foreign_key: true | //購入履歴ID
-| card_number     | integer    | null: false                    | //カード番号
-| expiration_date | integer    | null: false                    | //有効期限
-| security_code   | integer    | null: false                    | //セキュリティコード
-
-### Association
-- belongs_to :purchases
