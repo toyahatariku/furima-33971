@@ -11,7 +11,7 @@
 | second_name      | string | null: false | //名前
 | first_name_kana  | string | null: false | //苗字カナ
 | second_name_kana | string | null: false | //名前カナ
-| birthday         | string | null: false | //誕生日
+| birthday         | date   | null: false | //誕生日
 
 ### Association
 - has_many :items
@@ -29,7 +29,7 @@
 | shipping_burden  | string     | null: false                    | //配送料の負担
 | shipping_area    | string     | null: false                    | //発送元地域
 | days_to_ship     | string     | null: false                    | //発送までの日数
-| item_price       | string     | null: false                    | //価格
+| item_price       | integer    | null: false                    | //価格
 
 ### Association
 - belongs_to :users
@@ -42,12 +42,12 @@
 | ------------- | ---------- | ------------------------------ |
 | user_id       | references | null: false, foreign_key: true | //購入者ID
 | item_id       | references | null: false, foreign_key: true | //出品品ID
-| postal_code   | string     | null: false                    | //郵便番号
+| postal_code   | integer    | null: false                    | //郵便番号
 | prefectures   | string     | null: false                    | //都道府県
 | municipality  | string     | null: false                    | //市区町村
 | address       | string     | null: false                    | //番地
 | building_name | string     |                                | //建物名
-| phone_number  | string     | null: false                    | //電話番号
+| phone_number  | integer    | null: false                    | //電話番号
 
 ### Association
 - belongs_to :users
@@ -59,9 +59,9 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | purchase_id     | references | null: false, foreign_key: true | //購入履歴ID
-| card_number     | string     | null: false                    | //カード番号
-| expiration_date | string     | null: false                    | //有効期限
-| security_code   | string     | null: false                    | //セキュリティコード
+| card_number     | integer    | null: false                    | //カード番号
+| expiration_date | integer    | null: false                    | //有効期限
+| security_code   | integer    | null: false                    | //セキュリティコード
 
 ### Association
 - belongs_to :purchases
