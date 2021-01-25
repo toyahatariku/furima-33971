@@ -21,7 +21,7 @@
 //出品品
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user_id          | references | null: false, foreign_key: true | //出品者ID
+| user             | references | null: false, foreign_key: true | //出品者ID
 | item_name        | string     | null: false                    | //商品名
 | item_description | string     | null: false                    | //商品説明
 | category         | string     | null: false                    | //カテゴリー
