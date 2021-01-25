@@ -45,6 +45,7 @@
 ### Association
 - belongs_to :users
 - belongs_to :items
+- belongs_to :address
 
 ## address テーブル
 //購入者住所
@@ -58,5 +59,4 @@
 | phone_number  | string     | null: false                    | //電話番号
 
 ### Association
-- belongs_to :
-- belongs_to :
+- belongs_to :purchases
