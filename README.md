@@ -27,7 +27,7 @@
 | category         | integer    | null: false                    | //カテゴリー
 | condition        | integer    | null: false                    | //商品の状態
 | shipping_burden  | integer    | null: false                    | //配送料の負担
-| shipping_area    | integer    | null: false                    | //発送元地域
+| prefecture       | integer    | null: false                    | //発送元地域（都道府県）
 | days_to_ship     | integer    | null: false                    | //発送までの日数
 | price            | integer    | null: false                    | //価格
 
