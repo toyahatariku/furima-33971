@@ -22,14 +22,14 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true | //出品者ID
-| item_name        | string     | null: false                    | //商品名
-| item_description | string     | null: false                    | //商品説明
+| name             | string     | null: false                    | //商品名
+| description      | string     | null: false                    | //商品説明
 | category         | string     | null: false                    | //カテゴリー
 | condition        | string     | null: false                    | //商品の状態
 | shipping_burden  | string     | null: false                    | //配送料の負担
 | shipping_area    | string     | null: false                    | //発送元地域
 | days_to_ship     | string     | null: false                    | //発送までの日数
-| item_price       | integer    | null: false                    | //価格
+| price            | integer    | null: false                    | //価格
 
 ### Association
 - belongs_to :users
