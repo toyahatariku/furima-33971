@@ -32,8 +32,8 @@
 | price              | integer    | null: false                    | //価格
 
 ### Association
-- belongs_to :users
-- belongs_to :purchases
+- belongs_to :user
+- belongs_to :purchase
 
 ## purchases テーブル
 //購入履歴
@@ -43,8 +43,8 @@
 | item          | references | null: false, foreign_key: true | //出品品ID
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - belongs_to :address
 
 ## address テーブル
@@ -59,4 +59,4 @@
 | phone_number  | string     | null: false                    | //電話番号
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
