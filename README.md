@@ -51,6 +51,7 @@
 //購入者住所
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
+| purchase      | string     | null: false, foreign_key: true | //購入履歴ID
 | postal_code   | string     | null: false                    | //郵便番号
 | prefecture_id | integer    | null: false                    | //都道府県
 | municipality  | string     | null: false                    | //市区町村
