@@ -23,7 +23,7 @@
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true | //出品者ID
 | name               | string     | null: false                    | //商品名
-| description        | string     | null: false                    | //商品説明
+| description        | text       | null: false                    | //商品説明
 | category_id        | integer    | null: false                    | //カテゴリー
 | condition_id       | integer    | null: false                    | //商品の状態
 | shipping_burden_id | integer    | null: false                    | //配送料の負担
