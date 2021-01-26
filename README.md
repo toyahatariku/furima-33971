@@ -45,7 +45,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## address テーブル
 //購入者住所
