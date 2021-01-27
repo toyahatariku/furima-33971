@@ -34,6 +34,10 @@ RSpec.describe User, type: :model do
     it "パスワード（確認用）が空だと登録できない" do
     end
     it "パスワードがパスワード（確認用）と一致してないと登録できない" do
+      user = FactoryBot.build(:user)
+      user.password_confirmation = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "Password confirmation doesn't match Password"
     end
 
     it "苗字が空だと登録できない" do
