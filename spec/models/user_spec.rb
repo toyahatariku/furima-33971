@@ -21,6 +21,10 @@ RSpec.describe User, type: :model do
     end
 
     it "パスワードが空だと登録できない" do
+      user = FactoryBot.build(:user)
+      user.password = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "Password can't be blank"
     end
     it "パスワードが６文字未満だと登録できない" do
     end
