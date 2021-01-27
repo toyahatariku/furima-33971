@@ -7,23 +7,23 @@ class User < ApplicationRecord
   validates :email, presence:true
 # 英数字を含めるパスワード
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  with_options presence: true, format:  { with: PASSWORD_REGEX} do
+  with_options format: { with: PASSWORD_REGEX}, allow_blank: true do
     validates :password, :password_confirmation, presence:true
   end
 # 全角文字のみの名前 
   ZENKAKU_MOJI = /\A[ぁ-んァ-ヶ一-龥々]+\z/.freeze
-  with_options presence: true, format: { with: ZENKAKU_MOJI} do
+  with_options format: { with: ZENKAKU_MOJI}, allow_blank: true do
     validates :first_name, :second_name
   end
 # カタカナのみの名前
   KATAKANA_MOJI = /\A[ァ-ヶ]+\z/.freeze
-  with_options presence: true, format: { with: KATAKANA_MOJI} do
+  with_options format: { with: KATAKANA_MOJI}, allow_blank: true do
     validates :first_name_kana, :second_name_kana
   end
 
 # 記入必須
   with_options presence: true do
-    validates :nickname, :birthday
+    validates :first_name, :second_name, :first_name_kana, :second_name_kana, :nickname, :birthday
   end
 
 end
