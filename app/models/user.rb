@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, presence:true, uniqueness: true
+  validates :email, presence:true
 # 英数字を含めるパスワード
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   with_options presence: true, format:  { with: PASSWORD_REGEX, message: '英数字をそれぞれ１文字以上含め６文字以上にしてください' } do
