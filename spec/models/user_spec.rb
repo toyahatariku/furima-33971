@@ -137,15 +137,61 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "First name kana can't be blank"
     end
-    it "苗字（カナ）がカタカナでないと登録できない" do
+    it "苗字（カナ）がひらがなだと登録できない" do
+      @user.first_name_kana = "ひらがな"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
+    end
+    it "苗字（カナ）が漢字だと登録できない" do
+      @user.first_name_kana = "漢字"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
+    end
+    it "苗字（カナ）が数字だと登録できない" do
+      @user.first_name_kana = "１２３"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
+    end
+    it "苗字（カナ）が英字だと登録できない" do
+      @user.first_name_kana = "ABC"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
+    end
+    it "苗字（カナ）が半角だと登録できない" do
+      @user.first_name_kana = "ｶﾀｶﾅ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
     end
 
     it "名前（カナ）が空だと登録できない" do
       @user.second_name_kana = ""
       @user.valid?
       expect(@user.errors.full_messages).to include "Second name kana can't be blank"
-     end
-    it "名前（カナ）がカタカナでないと登録できない" do
+    end
+    it "名前（カナ）がひらがなだと登録できない" do
+      @user.second_name_kana = "ひらがな"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana is invalid"
+    end
+    it "名前（カナ）が漢字だと登録できない" do
+      @user.second_name_kana = "漢字"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana is invalid"
+    end
+    it "名前（カナ）が数字だと登録できない" do
+      @user.second_name_kana = "１２３"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana is invalid"
+    end
+    it "名前（カナ）が英字だと登録できない" do
+      @user.second_name_kana = "ABC"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana is invalid"
+    end
+    it "名前（カナ）が半角だと登録できない" do
+      @user.second_name_kana = "ｶﾀｶﾅ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana is invalid"
     end
 
     it "誕生日が空だと登録できない" do
