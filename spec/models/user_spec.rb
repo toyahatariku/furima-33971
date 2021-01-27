@@ -66,11 +66,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "First name can't be blank"
     end
-    it "苗字が全角（漢字）でないと登録できない" do
+    it "苗字が全角（漢字）だと登録できる" do
     end
-    it "苗字が全角（ひらがな）でないと登録できない" do
+    it "苗字が全角（ひらがな）だと登録できる" do
     end
-    it "苗字が全角（カタカナ）でないと登録できない" do
+    it "苗字が全角（カタカナ）だと登録できる" do
     end
 
     it "名前が空だと登録できない" do
@@ -78,11 +78,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Second name can't be blank"
     end
-    it "名前が全角（漢字）でないと登録できない" do
+    it "名前が全角（漢字）だと登録できる" do
     end
-    it "名前が全角（ひらがな）でないと登録できない" do
+    it "名前が全角（ひらがな）だと登録できる" do
     end
-    it "名前が全角（カタカナ）でないと登録できない" do
+    it "名前が全角（カタカナ）だと登録できる" do
     end
 
     it "苗字（カナ）が空だと登録できない" do
