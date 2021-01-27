@@ -10,12 +10,12 @@ class User < ApplicationRecord
   with_options format: { with: PASSWORD_REGEX}, allow_blank: true do
     validates :password, :password_confirmation, presence:true
   end
-# 全角文字のみの名前 
+# 全角（ひらがな・カタカナ・漢字）のみの名前と苗字
   ZENKAKU_MOJI = /\A[ぁ-んァ-ヶ一-龥々]+\z/.freeze
   with_options format: { with: ZENKAKU_MOJI}, allow_blank: true do
     validates :first_name, :second_name
   end
-# カタカナのみの名前
+# カタカナのみの名前と苗字
   KATAKANA_MOJI = /\A[ァ-ヶ]+\z/.freeze
   with_options format: { with: KATAKANA_MOJI}, allow_blank: true do
     validates :first_name_kana, :second_name_kana
