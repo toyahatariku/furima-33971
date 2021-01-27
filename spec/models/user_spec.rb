@@ -67,6 +67,8 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "First name can't be blank"
     end
     it "苗字が全角（漢字）だと登録できる" do
+      @user.first_name = "漢字"
+      expect(@user).to be_valid
     end
     it "苗字が全角（ひらがな）だと登録できる" do
     end
