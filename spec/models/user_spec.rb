@@ -41,6 +41,10 @@ RSpec.describe User, type: :model do
     end
 
     it "苗字が空だと登録できない" do
+      user = FactoryBot.build(:user)
+      user.first_name = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "First name can't be blank"
     end
     it "苗字が全角（漢字）でないと登録できない" do
     end
