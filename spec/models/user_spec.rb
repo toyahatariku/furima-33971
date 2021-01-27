@@ -76,7 +76,11 @@ RSpec.describe User, type: :model do
     end
 
     it "名前（カナ）が空だと登録できない" do
-    end
+      user = FactoryBot.build(:user)
+      user.second_name_kana = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "Second name kana can't be blank"
+     end
     it "名前（カナ）がカタカナでないと登録できない" do
     end
 
