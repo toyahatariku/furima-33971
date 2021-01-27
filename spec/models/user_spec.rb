@@ -54,6 +54,10 @@ RSpec.describe User, type: :model do
     end
 
     it "名前が空だと登録できない" do
+      user = FactoryBot.build(:user)
+      user.second_name = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "Second name can't be blank"
     end
     it "名前が全角（漢字）でないと登録できない" do
     end
