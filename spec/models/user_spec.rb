@@ -76,6 +76,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "First name is invalid"
     end
+    it "苗字が半角だと登録できない" do
+      @user.first_name = "ｱｲｳ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name is invalid"
+    end
 
     it "苗字が全角（漢字）だと登録できる" do
       @user.first_name = "漢字"
