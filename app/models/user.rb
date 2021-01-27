@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   validates :email, presence:true, uniqueness: true
 # 英数字を含めるパスワード
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  with_options presence: true, format:  { with: PASSWORD_REGEX, message: '英数字をそれぞれ１文字以上含め６文字以上にしてください' } do
-    validates :password, :password_confirmation, presence:true
-  end
+  # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  # with_options presence: true, format:  { with: PASSWORD_REGEX, message: '英数字をそれぞれ１文字以上含め６文字以上にしてください' } do
+  #   validates :password, :password_confirmation, presence:true
+  # end
 # 全角文字のみの名前 
   ZENKAKU_MOJI = /\A[ぁ-んァ-ヶ一-龥々]+\z/.freeze
   with_options presence: true, format: { with: ZENKAKU_MOJI, message: '全角文字を使用してください' } do
