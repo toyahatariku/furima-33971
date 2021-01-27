@@ -75,6 +75,8 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
     it "苗字が全角（カタカナ）だと登録できる" do
+      @user.first_name = "カタカナ"
+      expect(@user).to be_valid
     end
 
     it "名前が空だと登録できない" do
