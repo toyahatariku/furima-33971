@@ -95,17 +95,42 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
+
     it "名前が空だと登録できない" do
       @user.second_name = ""
       @user.valid?
       expect(@user.errors.full_messages).to include "Second name can't be blank"
     end
+    it "名前が英字だと登録できない" do
+      @user.second_name = "ABC"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name is invalid"
+    end
+    it "名前が数字だと登録できない" do
+      @user.second_name = "１２３"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name is invalid"
+    end
+    it "名前が半角だと登録できない" do
+      @user.second_name = "ｱｲｳ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name is invalid"
+    end
+
     it "名前が全角（漢字）だと登録できる" do
+      @user.second_name = "漢字"
+      expect(@user).to be_valid
     end
     it "名前が全角（ひらがな）だと登録できる" do
+      @user.second_name = "ひらがな"
+      expect(@user).to be_valid
     end
     it "名前が全角（カタカナ）だと登録できる" do
+      @user.second_name = "カタカナ"
+      expect(@user).to be_valid
     end
+
+
 
     it "苗字（カナ）が空だと登録できない" do
       @user.first_name_kana = ""
