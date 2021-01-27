@@ -67,6 +67,10 @@ RSpec.describe User, type: :model do
     end
 
     it "苗字（カナ）が空だと登録できない" do
+      user = FactoryBot.build(:user)
+      user.first_name_kana = ""
+      user.valid?
+      expect(user.errors.full_messages).to include "First name kana can't be blank"
     end
     it "苗字（カナ）がカタカナでないと登録できない" do
     end
