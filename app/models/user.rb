@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   # 英数字を含めるパスワード
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   with_options format: { with: PASSWORD_REGEX }, allow_blank: true do
