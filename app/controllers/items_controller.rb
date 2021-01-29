@@ -1,7 +1,4 @@
 class ItemsController < ApplicationController
-  def index
-  end
-  
   def new    
     @item = Item.new
     unless user_signed_in?
@@ -10,7 +7,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item.save(item_params)
+    # binding.pry
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+ 
   end
 
   private
