@@ -8,7 +8,7 @@ class Days_to_ship < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :articles
+  has_many :items
 
   end
 
