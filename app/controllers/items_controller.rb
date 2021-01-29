@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   end
   
   def new    
+    @item = Item.new
     unless user_signed_in?
       redirect_to(new_user_session_path)
     end
