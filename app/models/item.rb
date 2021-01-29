@@ -17,7 +17,7 @@ class Item < ApplicationRecord
 
   # 記入必須
   with_options presence: true do
-    validates :user, :name, :description, :price,:category_id, :condition_id, :shipping_burden_id, :prefecture_id, :days_to_ship_id, numericality:, :image
+    validates :user, :name, :description, :category_id, :condition_id, :shipping_burden_id, :prefecture_id, :days_to_ship_id,  :price, :image
   end
 
 end
