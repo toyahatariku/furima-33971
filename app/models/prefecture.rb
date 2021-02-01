@@ -1,5 +1,5 @@
 class Prefecture < ActiveHash::Base
-#発送元地域(都道府県)
+  # 発送元地域(都道府県)
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: '北海道' },
@@ -48,10 +48,9 @@ class Prefecture < ActiveHash::Base
     { id: 45, name: '大分県' },
     { id: 46, name: '宮崎県' },
     { id: 47, name: '鹿児島県' },
-    { id: 48, name: '沖縄県' },
+    { id: 48, name: '沖縄県' }
   ]
 
   include ActiveHash::Associations
   has_many :items
-
-  end
+end
