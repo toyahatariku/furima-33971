@@ -16,9 +16,10 @@ class User < ApplicationRecord
   with_options format: { with: KATAKANA_MOJI }, allow_blank: true do
     validates :first_name_kana, :second_name_kana
   end
-
   # 記入必須
   with_options presence: true do
     validates :first_name, :second_name, :first_name_kana, :second_name_kana, :nickname, :birthday
   end
+
+  has_many :items
 end
