@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   belongs_to :daystoship
 
   belongs_to :user
+  has_one :purchase
+
   has_one_attached :image
 
   # 商品名は40文字まで
