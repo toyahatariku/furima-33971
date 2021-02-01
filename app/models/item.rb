@@ -2,9 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
-  belongs_to :shippingburden
+  belongs_to :shipping_burden
   belongs_to :prefecture
-  belongs_to :daystoship
+  belongs_to :days_to_ship
 
   belongs_to :user
   has_one :purchase
