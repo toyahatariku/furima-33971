@@ -10,6 +10,10 @@ RSpec.describe Item, type: :model do
       it '全ての項目が埋まっていると登録できる' do
         expect(@item).to be_valid
       end
+      it '販売価格が半角数字だと登録できる' do
+        @item.price = '1000'
+        expect(@item).to be_valid
+      end
     end
 
     context '出品登録ができない場合' do
