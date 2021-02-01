@@ -60,6 +60,9 @@ RSpec.describe Item, type: :model do
 
       end
       it 'カテゴリーの選択が1だと登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category must be other than 1"
 
       end
       it '商品状態が空だと登録できない' do
@@ -69,6 +72,9 @@ RSpec.describe Item, type: :model do
 
       end
       it '商品状態の選択が1だと登録できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Condition must be other than 1"
 
       end
       it '発送料の負担が空だと登録できない' do
@@ -78,6 +84,9 @@ RSpec.describe Item, type: :model do
 
       end
       it '発送料の負担の選択が1だと登録できない' do
+        @item.shipping_burden_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipping burden must be other than 1"
 
       end
       it '発送元の地域が空だと登録できない' do
@@ -87,6 +96,9 @@ RSpec.describe Item, type: :model do
 
       end
       it '発送元の地域の選択が1だと登録できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Prefecture must be other than 1"
 
       end
       it '発送までの日数が空だと登録できない' do
@@ -96,6 +108,9 @@ RSpec.describe Item, type: :model do
 
       end
       it '発送までの日数の選択が1だと登録できない' do
+        @item.days_to_ship_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Days to ship must be other than 1"
 
       end
 
