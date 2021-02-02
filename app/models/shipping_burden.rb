@@ -1,4 +1,4 @@
-class Shippingburden < ActiveHash::Base
+class ShippingBurden < ActiveHash::Base
   # 配送料の負担
   self.data = [
     { id: 1, name: '---' },

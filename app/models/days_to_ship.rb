@@ -1,4 +1,4 @@
-class Daystoship < ActiveHash::Base
+class DaysToShip < ActiveHash::Base
   # 発送までの日数
   self.data = [
     { id: 1, name: '---' },
