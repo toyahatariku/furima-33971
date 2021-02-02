@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new,:edit]
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :back_index, only: [:edit, :update]
 
   def index
@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
   private
 
   def item_params
@@ -42,9 +43,6 @@ class ItemsController < ApplicationController
 
   def back_index
     @item = Item.find(params[:id])
-      unless user_signed_in? && current_user.id == @item.user_id
-       redirect_to root_path
-      end
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
-
 end
