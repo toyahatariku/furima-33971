@@ -1,14 +1,13 @@
 class Item < ApplicationRecord
+# 出品品
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping_burden
   belongs_to :prefecture
   belongs_to :days_to_ship
-
   belongs_to :user
   has_one :purchase
-
   has_one_attached :image
 
   # 商品名は40文字まで
