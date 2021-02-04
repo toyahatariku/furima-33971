@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :address do
-    postal_code       {"503-0234"}
+    postal_code       {"634-3810"}
     prefecture_id     {22}
-    municipality      {"輪之内町"}
+    municipality      {"宮本町"}
     address           {"634番地"}
     building_name     {"スカイツリー"}
     phone_number      {"09012345678"}
