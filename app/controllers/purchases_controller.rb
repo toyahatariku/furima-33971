@@ -5,29 +5,33 @@ class PurchasesController < ApplicationController
   end
 
   def create
-binding.pry
-    # @purchase = Purchase.new(purchase_params)
-    if @purchase.valid?
+  purchase = Purchase.create(purchase_params(params))
+  Address.create(address_params(params,purchase))
+    # if purchase.valid?
       # pay_item
-      @purchase.save
-      return redirect_to root_path
-    else
-      render 'index'
-    end
+      # purchase.save
+      # return redirect_to root_path
+    # else
+    #   render 'index'
+    # end
   end
 
-  private
+  # private
 
-  # def purchase_params
-  #   params.require(:purchase).permit(:price)
-  # end
+  def purchase_params(params)
+    params.permit(:item_id).merge(user_id: current_user.id)
+  end
+  def address_params(params,purchase)
+   params.permit(:postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number).merge(purchase_id: purchase.id)
+  end
+  
+    def pay_item
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp::Charge.create(
+        amount: order_params[:price],
+        card: order_params[:token],
+        currency:'jpy'
+      )
+   end
 
-#   def pay_item
-#     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-#     Payjp::Charge.create(
-#       amount: order_params[:price],
-#       card: order_params[:token],
-#       currency:'jpy'
-#     )
-#  end
 end
