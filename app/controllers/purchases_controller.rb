@@ -8,7 +8,8 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(purchases_params)
     if @purchase_address.valid?
-        @purchase_address.save
+      binding.pry
+      @purchase_address.save
       # pay_item
         redirect_to item_path(@item.id)
       # return redirect_to root_path
