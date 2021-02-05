@@ -5,14 +5,13 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    binding.pry
+        @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(purchases_params)
     if @purchase_address.valid?
-      binding.pry
       @purchase_address.save
       # pay_item
         redirect_to item_path(@item.id)
-      # return redirect_to root_path
     else
       render 'index'
     end
