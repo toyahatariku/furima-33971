@@ -6,11 +6,10 @@ class PurchasesController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    purchase_address = PurchaseAddress.new(purchases_params)
-    if purchase_address.valid?
-        purchase_address.save
+    @purchase_address = PurchaseAddress.new(purchases_params)
+    if @purchase_address.valid?
+        @purchase_address.save
       # pay_item
-      # purchase.save
         redirect_to item_path(@item.id)
       # return redirect_to root_path
     else
