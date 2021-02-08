@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-    <% if @purchases.include?(@item.id)%>
+    <% if @sold_items.include?(@item.id)%>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -23,7 +23,7 @@
       </span>
     </div>
     <%# 商品が購入されていなければ表示%>
-    <% unless @purchases.include?(@item.id)%>
+    <% unless @sold_items.include?(@item.id)%>
         <%# 商品登録者は編集と削除を表示 %>
       <% if user_signed_in? && current_user.id == @item.user_id  %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>

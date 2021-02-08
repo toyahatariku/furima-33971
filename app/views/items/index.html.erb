@@ -133,7 +133,7 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <% if @purchases.include?(item.id)%>
+          <% if @sold_items.include?(item.id)%>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
