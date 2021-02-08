@@ -12,7 +12,7 @@ class PurchaseAddress
     validates :prefecture_id  ,numericality: { other_than: 1 , message: "都道府県を選んで下さい"}
     validates :municipality   
     validates :address        
-    validates :phone_number   ,format: {with: /\A\d{10,11}\z/, message: "電話番号は10桁か11桁"}
+    validates :phone_number   ,format: {with: /\A\d{10,11}\z/, message: "電話番号は「-」無しの半角10桁か11桁"}
     # トークン情報
     validates :token
   end
