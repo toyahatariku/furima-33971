@@ -13,6 +13,8 @@ class PurchaseAddress
     validates :municipality   
     validates :address        
     validates :phone_number   ,format: {with: /\A\d{10,11}\z/, message: "電話番号は10桁か11桁"}
+    # トークン情報
+    validates :token
   end
   
 
