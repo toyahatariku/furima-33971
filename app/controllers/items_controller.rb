@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :item_find_id, only: [:show, :edit, :update, :destroy]
   before_action :back_index, only: [:edit, :update, :destroy]
-  before_action :sold_items, only: [:index, :show ,:edit]
+  before_action :sold_items, only: [:index, :show, :edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -60,6 +60,6 @@ class ItemsController < ApplicationController
   end
 
   def sold_items
-    @sold_items = Purchase.pluck(:item_id) 
+    @sold_items = Purchase.pluck(:item_id)
   end
 end

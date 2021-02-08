@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-# 登録者情報
+  # 登録者情報
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -25,5 +25,4 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :first_name, :second_name, :first_name_kana, :second_name_kana, :nickname, :birthday
   end
-
 end

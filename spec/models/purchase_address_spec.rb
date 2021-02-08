@@ -29,12 +29,12 @@ RSpec.describe PurchaseAddress, type: :model do
       it '郵便番号が7桁でないと記録されない' do
         @purchase_address.postal_code = '012-345'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Postal code 郵便番号は「-」を含む且つ7桁"
+        expect(@purchase_address.errors.full_messages).to include 'Postal code 郵便番号は「-」を含む且つ7桁'
       end
       it '郵便番号にハイフンが入っていないと記録されない' do
         @purchase_address.postal_code = '0123456'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Postal code 郵便番号は「-」を含む且つ7桁"
+        expect(@purchase_address.errors.full_messages).to include 'Postal code 郵便番号は「-」を含む且つ7桁'
       end
 
       it '都道府県が空だと記録されない' do
@@ -45,7 +45,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it '都道府県の選択が1「---」だと記録されない' do
         @purchase_address.prefecture_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Prefecture 都道府県を選んで下さい"
+        expect(@purchase_address.errors.full_messages).to include 'Prefecture 都道府県を選んで下さい'
       end
 
       it '市区町村が空だと記録されない' do
@@ -68,22 +68,22 @@ RSpec.describe PurchaseAddress, type: :model do
       it '電話番号が全角数字だと記録されない' do
         @purchase_address.phone_number = '０９０１２３４５６７８'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone number 電話番号は「-」無しの半角10桁か11桁"
+        expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
       end
       it '電話番号にハイフンが入っていると記録されない' do
         @purchase_address.phone_number = '090-1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone number 電話番号は「-」無しの半角10桁か11桁"
+        expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
       end
       it '電話番号が12桁以上だと記録されない' do
         @purchase_address.phone_number = '090123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone number 電話番号は「-」無しの半角10桁か11桁"
+        expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
       end
       it '電話番号が9桁以下だと記録されない' do
         @purchase_address.phone_number = '090123456'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone number 電話番号は「-」無しの半角10桁か11桁"
+        expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
       end
 
       it 'トークンが空だと記録されない' do

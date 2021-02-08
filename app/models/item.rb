@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-# 出品品
+  # 出品品
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
