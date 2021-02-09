@@ -2,36 +2,38 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit]
   before_action :item_param, only: [:index, :create]
   before_action :back_index, only: [:index]
+  before_action :Solditem_to_top, only: [:index]
 
-  def index
-    @purchase_address = PurchaseAddress.new
-    if nil != (Purchase.find_by(item_id: @item.id))  # 商品が購入済みならトップページへ遷移する
-      redirect_to root_path
-    end
+def index
+  @purchase_address = PurchaseAddress.new
+end
+
+def create
+  @purchase_address = PurchaseAddress.new(purchases_params)
+  if @purchase_address.valid?
+    @purchase_address.save
+    pay_item
+    redirect_to root_path
+  else
+    render 'index'
   end
+end
 
-  def create
-    @purchase_address = PurchaseAddress.new(purchases_params)
-    if @purchase_address.valid?
-      @purchase_address.save
-      pay_item
-      redirect_to root_path
-    else
-      render 'index'
-    end
-  end
-
-  private
+private
 
   def item_param
     @item = Item.find(params[:item_id])
   end
+  def Solditem_to_top
+    redirect_to root_path if nil != (Purchase.find_by(item_id: @item.id))  # 商品が購入済みならトップページへ遷移する  
+  end
+  
   def purchases_params
     params.permit(:item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :purchase_id, :token).merge(
       user_id: current_user.id, price: @item.price
     )
   end
-
+  
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -40,7 +42,7 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
   end
-
+  
   def back_index
     redirect_to root_path unless current_user.id == @item.user_id
   end
