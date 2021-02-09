@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
+  before_action :item_param, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
     if !user_signed_in? # ログインしていないとログインページへ遷移する
       redirect_to new_user_session_path
@@ -12,7 +13,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(purchases_params)
     if @purchase_address.valid?
       @purchase_address.save
@@ -25,6 +25,9 @@ class PurchasesController < ApplicationController
 
   private
 
+  def item_param
+    @item = Item.find(params[:item_id])
+  end
   def purchases_params
     params.permit(:item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :purchase_id, :token).merge(
       user_id: current_user.id, price: @item.price
