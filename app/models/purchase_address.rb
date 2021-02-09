@@ -1,7 +1,7 @@
 class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number,
-                :purchase_id, :token, :price
+                :token, :price
 
   # 必須項目バリデーション
   with_options presence: true do
