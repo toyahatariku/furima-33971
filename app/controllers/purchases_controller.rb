@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit]
   before_action :item_param, only: [:index, :create]
   before_action :back_index, only: [:index]
-  before_action :Solditem_to_top, only: [:index]
+  before_action :solditem_to_top, only: [:index]
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -25,7 +25,7 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def Solditem_to_top
+  def solditem_to_top
     redirect_to root_path if nil != (Purchase.find_by(item_id: @item.id))  # 商品が購入済みならトップページへ遷移する
   end
 
