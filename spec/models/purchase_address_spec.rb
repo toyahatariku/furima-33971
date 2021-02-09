@@ -77,6 +77,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
       end
+      it '電話番号が英数字混合だと記録されない' do
+        @purchase_address.phone_number = '0901234abcd'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include 'Phone number 電話番号は「-」無しの半角10桁か11桁'
+      end
       it '電話番号にハイフンが入っていると記録されない' do
         @purchase_address.phone_number = '090-1234567'
         @purchase_address.valid?
