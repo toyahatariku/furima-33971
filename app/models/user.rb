@@ -1,6 +1,11 @@
 class User < ApplicationRecord
+  # 登録者情報
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :items
+  has_many :purchases
+
   # 英数字を含めるパスワード
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   with_options format: { with: PASSWORD_REGEX }, allow_blank: true do
@@ -20,7 +25,4 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :first_name, :second_name, :first_name_kana, :second_name_kana, :nickname, :birthday
   end
-
-  has_many :items
-  has_many :purchases
 end
