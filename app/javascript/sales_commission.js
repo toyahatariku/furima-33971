@@ -1,4 +1,4 @@
-if (document.URL.match( /new/ )) {
+if (document.URL.match( /items/ )) {
   window.addEventListener('load', () => {
     const priceInput = document.getElementById("item-price");
     priceInput.addEventListener("input", () => {
