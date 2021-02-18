@@ -1,6 +1,7 @@
 if (document.URL.match( /items/ )) {
   document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById('image-list');
+    const ImageInputs = document.getElementById('image_inputs');
 
     //選択した画像を表示する関数
     const createImageHTML = (blob) => {
@@ -23,7 +24,7 @@ if (document.URL.match( /items/ )) {
       
       //生成したHTMLの要素をブラウザに表示させる
       imageElement.appendChild(blobImage);
-      imageElement.appendChild(inputHTML);
+      ImageInputs.appendChild(inputHTML);
       ImageList.appendChild(imageElement);
 
       inputHTML.addEventListener('change', (e) =>{
