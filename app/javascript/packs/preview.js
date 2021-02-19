@@ -29,7 +29,7 @@ if (document.URL.match( /items/ )) {
 
       inputHTML.addEventListener('change', (e) =>{
         const imageContent = document.getElementById(`item-img_${imageElementNum + 1}`);
-        if (imageContent){
+        if (imageContent){ // 画像がある場合のみ選択した画像に差し替える
           imageContent.src=window.URL.createObjectURL(e.target.files[0]);
         } else {  //画像がない場合は画像と選択ボタンを追加する
           file = e.target.files[0];
@@ -39,20 +39,21 @@ if (document.URL.match( /items/ )) {
         };
       })
     };
-    
-    
-    document.getElementById(`item-file_0`).addEventListener('change', function(e){
-      // 画像がある場合のみ選択した画像に差し替える
-      const imageContent = document.getElementById(`item-img_0`);
-      if (imageContent){
-        imageContent.src=window.URL.createObjectURL(e.target.files[0]);
-      } else {  //画像がない場合は画像と選択ボタンを追加する
-      const file = e.target.files[0];
-      const blob = window.URL.createObjectURL(file);
-      
-      createImageHTML(blob);
-      
-      };
-    });
+
+    //画像の数を数え各選択項目にイベントを設置
+    let imageElementNum = document.querySelectorAll('.image-element').length
+    for( let i = 0 ; i <= imageElementNum ; i++ ) {
+      document.getElementById(`item-file_${i}`).addEventListener('change', function(e){
+        const imageContent = document.getElementById(`item-img_${i}`);
+        if (imageContent){ //画像がある場合のみ選択した画像に差し替える
+          imageContent.src=window.URL.createObjectURL(e.target.files[0]);
+        } else {  //画像がない場合は画像と選択ボタンを追加する
+        const file = e.target.files[0];
+        const blob = window.URL.createObjectURL(file);
+        createImageHTML(blob);
+        };
+      });
+    };
+
   });
-}
+};
