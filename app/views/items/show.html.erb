@@ -7,14 +7,18 @@
       <%= @item.name %>
     </h2>
     <div class="item-img-content">
-      <% @item.images.each do |image| %>
-        <%= image_tag image ,class:"item-box-img" %>
-      <% end %>
-    <% if @sold_items.include?(@item.id)%>
-      <div class="sold-out">
+    <%# 購入されていなければ全画像表示 %>
+      <% unless @sold_items.include?(@item.id)%> 
+        <% @item.images.each do |image| %>
+          <%= image_tag image ,class:"item-box-img" %>
+        <% end %>
+    <%# 購入されていたら一枚目の画像とSoldOut!!の表示 %>
+      <% else @sold_items.include?(@item.id)%>
+        <%= image_tag @item.images[0] ,class:"item-box-img" %>
+        <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-    <% end %>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
