@@ -17,7 +17,7 @@ if (document.URL.match( /items/ )) {
       blobImage.setAttribute('src', blob);
       //ファイル選択ボタンを生成
       const inputHTML = document.createElement('input');
-      inputHTML.setAttribute('id',`item-file_${imageElementNum}`);
+      inputHTML.setAttribute('id',`item-file_${imageElementNum + 1}`);
       inputHTML.setAttribute('class',`item-file`);
       inputHTML.setAttribute('name', 'item[images][]');
       inputHTML.setAttribute('type', 'file');
