@@ -7,8 +7,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   belongs_to :user
-  has_one :purchase
-  has_many_attached :images
+  has_one :purchase, dependent: :destroy
+  has_many_attached :images, dependent: :destroy
 
   # 商品名は40文字まで
   validates :name, length: { maximum: 40 }
