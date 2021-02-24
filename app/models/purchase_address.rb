@@ -1,7 +1,7 @@
 class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number,
-                :token, :price
+                :price
 
   # 必須項目バリデーション
   with_options presence: true do
@@ -14,8 +14,6 @@ class PurchaseAddress
     validates :municipality
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '「-」無しの半角10桁か11桁で入力して下さい' }
-    # トークン情報
-    validates :token
   end
 
   def save
