@@ -18,6 +18,8 @@ ja:
        name: 商品名
        description: 商品の説明
        images: 画像
+     card:
+       card_token: カード情報
  activemodel:
    attributes:
      purchase_address:
