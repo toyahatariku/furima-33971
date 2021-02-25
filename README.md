@@ -35,6 +35,29 @@
 ### Association
 - belongs_to :user
 - has_one :purchase
+- has_many :item_tag
+- has_many :items, through: :item_tag_relations
+
+## item_tag テーブル（中間テーブル）
+//出品品
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item               | references | null: false, foreign_key: true | //出品商品
+| tag                | references | null: false, foreign_key: true | //タグ
+
+### Association
+- belongs_to :item
+- belongs_to :tag
+
+## tag テーブル
+//出品品
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| tag                | string     | null: false                    | //タグ
+
+### Association
+- has_many :item_tag
+- has_many :tags, through: :item_tag_relations
 
 ## purchases テーブル
 //購入履歴
@@ -67,9 +90,9 @@
 //カード情報
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true | //ユーザーID
 | card_token     | string     | null: false                    | //カードトークン
 | customer_token | string     | null: false                    | //カスタマートークン
-| user_id        | references | null: false, foreign_key: true | //ユーザーID
 
 ### Association
 - belongs_to :user
