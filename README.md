@@ -16,6 +16,7 @@
 ### Association
 - has_many :items
 - has_many :purchases
+- has_one  :card
 
 ## items テーブル
 //出品品
@@ -61,3 +62,14 @@
 
 ### Association
 - belongs_to :purchase
+
+## cards テーブル
+//カード情報
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| card_token     | string     | null: false                    | //カードトークン
+| customer_token | string     | null: false                    | //カスタマートークン
+| user_id        | references | null: false, foreign_key: true | //ユーザーID
+
+### Association
+- belongs_to :user
