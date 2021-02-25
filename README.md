@@ -35,10 +35,10 @@
 ### Association
 - belongs_to :user
 - has_one :purchase
-- has_many :item_tag
-- has_many :items, through: :item_tag_relations
+- has_many :item_tag_relations
+- has_many :tags, through: :item_tag_relations
 
-## item_tag テーブル（中間テーブル）
+## item_tag_relations テーブル（中間テーブル）
 //出品品
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -56,8 +56,8 @@
 | tag                | string     | null: false                    | //タグ
 
 ### Association
-- has_many :item_tag
-- has_many :tags, through: :item_tag_relations
+- has_many :item_tag_relations
+- has_many :items, through: :item_tag_relations
 
 ## purchases テーブル
 //購入履歴
