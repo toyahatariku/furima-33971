@@ -7,20 +7,21 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.order('created_at DESC')
   end
-
+  
   def new
-    @item = Item.new
+    @items_tag = ItemsTag.new
   end
-
+  
   def create
-    @item = Item.new(item_params)
-    if @item.save
+    @items_tag = ItemsTag.new(item_params)
+    if @items_tag.valid? 
+      @items_tag.save
       redirect_to root_path
     else
       render :new
     end
   end
-
+  
   def show
   end
 
@@ -47,9 +48,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_burden_id, :prefecture_id,
-                                 :days_to_ship_id, :price, images: []).merge(user_id: current_user.id)
-  end
+    params.require(:items_tag).permit(:name, :description, :category_id, :condition_id, :shipping_burden_id, :prefecture_id,
+      :days_to_ship_id, :price, :tag, images: []).merge(user_id: current_user.id)
+    end
 
   def item_find_id
     @item = Item.find(params[:id])
@@ -63,3 +64,4 @@ class ItemsController < ApplicationController
     @sold_items = Purchase.pluck(:item_id)
   end
 end
+

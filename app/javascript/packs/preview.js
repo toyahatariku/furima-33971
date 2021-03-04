@@ -19,7 +19,7 @@ if (document.URL.match( /items/ )) {
       const inputHTML = document.createElement('input');
       inputHTML.setAttribute('id',`item-file_${imageElementNum + 1}`);
       inputHTML.setAttribute('class',`item-file`);
-      inputHTML.setAttribute('name', 'item[images][]');
+      inputHTML.setAttribute('name', 'items_tag[images][]');
       inputHTML.setAttribute('type', 'file');
       
       //生成したHTMLの要素をブラウザに表示させる

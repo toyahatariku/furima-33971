@@ -7,9 +7,9 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item,local: true do |f| %>
+    <%= form_with model: @items_tag, url: items_path, method: :POST,local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: @items_tag if @items_tag %>  
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -22,7 +22,7 @@
           クリックしてファイルをアップロード
         </p>
         <div id="image_inputs">
-          <%= f.file_field :images, id:"item-file_0", class: 'item-file', name:'item[images][]' %>
+          <%= f.file_field :images, id:"item-file_0", class: 'item-file', name:'items_tag[images][]' %>
         </div>
       </div>
       <div id="image-list"></div>
@@ -35,6 +35,7 @@
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :tag, class:"items-text", id:"item-tag", placeholder:"タグ", maxlength:"10" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
